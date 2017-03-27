@@ -4,7 +4,7 @@
   "description": "Code to help trading in PoE",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server/main.js"
   },
   "dependencies": {
     "express": "^4.15.2"

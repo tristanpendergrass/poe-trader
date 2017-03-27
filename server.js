@@ -4,7 +4,7 @@ const morgan = require('morgan');             // log requests to the console (ex
 const bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 const methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 
-const getPairInfo = require(__dirname + '/server/functions/getPairInfo.js');
+const getTrades = require(__dirname + '/server/functions/getTrades.js');
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -13,19 +13,24 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-app.get('/pair-info', (req, res) => {
+app.get('/trades', (req, res) => {
   try {
-    const item1 = parseInt(req.query.item1);
-    const item2 = parseInt(req.query.item2);
+    const want = parseInt(req.query.want);
+    const have = parseInt(req.query.have);
 
-    if (Number.isInteger(item1) && Number.isInteger(item2)) {
-      res.json(getPairInfo(item1, item2));
+    if (Number.isInteger(want) && Number.isInteger(have)) {
+      getTrades(want, have)
+        .then((info) => {
+          res.json(info);
+        }, (err) => {
+          throw err;
+        });
     } else {
-      throw new Error('Need to pass integer as item1 and item2 to this route');
+      throw new Error('Need to pass integer as want and have to this route');
     }
   }
   catch (e) {
-    res.send(422);
+    res.sendStatus(422);
   }
 });
 

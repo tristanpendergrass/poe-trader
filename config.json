@@ -1,0 +1,22 @@
+{
+  "serverName": "Legacy",
+  "cssSelector": ".displayoffer-middle",
+  "itemIds": {
+    "1": "Orb of Alteration",
+    "2": "Orb of Fusing",
+    "3": "Orb of Alchemy",
+    "4": "Chaos Orb",
+    "5": "Gemcutter's Prism",
+    "6": "Exalted Orb",
+    "7": "Chromatic Orb",
+    "8": "Jeweller's Orb",
+    "9": "Orb of Chance",
+    "10": "Cartographer's Chisel",
+    "11": "Orb of Scouring",
+    "12": "Blessed Orb",
+    "13": "Orb of Regret",
+    "14": "Regal Orb",
+    "15": "Divine Orb",
+    "16": "Vaal Orb"
+  }
+}

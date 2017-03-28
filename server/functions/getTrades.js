@@ -11,7 +11,7 @@ module.exports = function getTrades(want, have) {
     .then((rawHtml) => {
       const $ = cheerio.load(rawHtml);
 
-      return Array.from($('.displayoffer')).map((el) => {
+      return Array.from($('.displayoffer')).slice(0, 1).map((el) => {
         return new Trade({
           ign: el.attribs['data-ign'],
           buycurrency: parseInt(el.attribs['data-buycurrency']),

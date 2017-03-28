@@ -34,6 +34,10 @@ app.get('/trades', (req, res) => {
   }
 });
 
+app.get('/favicon.ico', (req, res) => {
+  res.sendStatus(200);
+});
+
 app.get('*', function(req, res) {
   res.sendFile('./public/index.html');
 });

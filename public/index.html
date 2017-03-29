@@ -16,8 +16,18 @@
     </header>
 
     <main>
-      <trade-selector trades="vm.itemATrades" selected="vm.selectedItemA" on-select="vm.selectedItemA = trade"></trade-selector>
-      <trade-selector trades="vm.itemBTrades" selected="vm.selectedItemB" on-select="vm.selectedItemB = trade"></trade-selector>
+      <trade-selector
+        trades="vm.itemATrades"
+        selected="vm.selectedItemA"
+        on-select="vm.selectedItemA = trade"
+        item-info="vm.itemA">
+      </trade-selector>
+      <trade-selector
+        trades="vm.itemBTrades"
+        selected="vm.selectedItemB"
+        on-select="vm.selectedItemB = trade"
+        item-info="vm.itemB">
+      </trade-selector>
     </main>
 
     <footer>

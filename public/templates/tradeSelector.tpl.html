@@ -1,8 +1,9 @@
+<div class="trade-selector-header">{{ vm.item.name }}</div>
 <ul>
   <li
     ng-repeat="trade in vm.trades"
     ng-class="{ selected: trade === vm.selected }"
     ng-click="vm.onSelect({ trade: trade })">
-    trade by {{ trade.ign }}
+    {{ trade.ign }} is selling <code>{{ trade.sellvalue }}<code> <b>{{ trade.sellcurrency.name }}</b> for <code>{{ trade.buyvalue }}</code> <b>{{ trade.buycurrency.name }}</b>
   </li>
 </ul>

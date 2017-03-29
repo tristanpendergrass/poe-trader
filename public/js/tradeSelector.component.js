@@ -11,6 +11,7 @@ angular.module('poe-trader')
   bindings: {
     trades: '<',
     selected: '<',
-    onSelect: '&'
+    onSelect: '&',
+    itemInfo: '<'
   }
 });

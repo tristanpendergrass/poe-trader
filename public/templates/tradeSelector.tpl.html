@@ -1,9 +1,21 @@
-<div class="trade-selector-header">{{ vm.item.name }}</div>
-<ul>
-  <li
-    ng-repeat="trade in vm.trades"
-    ng-class="{ selected: trade === vm.selected }"
-    ng-click="vm.onSelect({ trade: trade })">
-    {{ trade.ign }} is selling <code>{{ trade.sellvalue }}<code> <b>{{ trade.sellcurrency.name }}</b> for <code>{{ trade.buyvalue }}</code> <b>{{ trade.buycurrency.name }}</b>
-  </li>
-</ul>
+<div class="trade-selector-container">
+  <div class="trade-selector-header">
+    <span ng-if="vm.trades.length > 0">
+      <a ng-href="http://currency.poe.trade/search?league=Legacy&online=x&want={{ vm.trades[0].sellcurrency.id }}&have={{ vm.trades[0].buycurrency.id }}">
+        Selling {{ vm.trades[0].sellcurrency.name }} for {{ vm.trades[0].buycurrency.name }}
+      </a>
+    </span>
+    <span ng-if="vm.trades.length === 0">No Data</span>
+  </div>
+  <ul>
+    <li
+      ng-repeat="trade in vm.trades"
+      ng-class="{ selected: trade === vm.selected }"
+      ng-click="vm.onSelect({ trade: trade })">
+      <code ng-if="vm.ratioNumerator === 'sell'">{{ trade.sellvalue / trade.buyvalue | number : 2 }}</code>
+      <code ng-if="vm.ratioNumerator === 'buy'">{{ trade.buyvalue / trade.sellvalue | number : 2 }}</code>
+      <span class="ratio-divider"></span>
+      <code>{{ trade.sellvalue }}<code> <b>{{ trade.sellcurrency.name }}</b> for <code>{{ trade.buyvalue }}</code> <b>{{ trade.buycurrency.name }}</b>
+    </li>
+  </ul>
+</div>

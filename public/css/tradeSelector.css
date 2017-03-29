@@ -1,19 +1,41 @@
-trade-selector > ul {
+trade-selector .trade-selector-container {
   display: inline-block;
-  width: 1000px;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  width: 500px;
   border: 1px solid black;
-  padding: 10px;
-  margin: 10px;
 }
 
-trade-selector > ul > li:hover {
+trade-selector ul {
+  display: inline-block;
+  width: 100%;
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+}
+
+trade-selector ul > li {
+  margin: 0;
+  padding: 2px 5px;
+}
+
+trade-selector ul > li:hover {
   background-color: yellow;
   cursor: default;
 }
 
-trade-selector > ul > li.selected {
+trade-selector ul > li.selected {
   background-color: orange;
+}
+
+trade-selector .trade-selector-header {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+trade-selector ul > li .ratio-divider {
+  display: inline-block;
+  width: 0px;
+  height: 100%;
+  border-left: 1px solid black;
+  margin: 0 20px;
 }

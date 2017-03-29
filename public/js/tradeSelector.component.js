@@ -12,6 +12,7 @@ angular.module('poe-trader')
     trades: '<',
     selected: '<',
     onSelect: '&',
-    itemInfo: '<'
+    itemInfo: '<',
+    ratioNumerator: '@'
   }
 });

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tradeSelector.css">
+    <link rel="stylesheet" href="css/tradeComparer.css">
   </head>
   <body ng-app="poe-trader" ng-cloak ng-controller="MainCtrl as vm">
     <header>
@@ -23,6 +24,7 @@
         item-info="vm.itemA"
         ratio-numerator="buy">
       </trade-selector>
+
       <trade-selector
         trades="vm.itemBTrades"
         selected="vm.selectedItemB"
@@ -30,6 +32,11 @@
         item-info="vm.itemB"
         ratio-numerator="sell">
       </trade-selector>
+
+      <trade-comparer
+        item-a="vm.selectedItemA"
+        item-b="vm.selectedItemB">
+      </trade-comparer>
     </main>
 
     <footer>
@@ -44,5 +51,6 @@
     <script src="js/app.js"></script>
     <script src="js/main.controller.js"></script>
     <script src="js/tradeSelector.component.js"></script>
+    <script src="js/tradeComparer.component.js"></script>
   </body>
 </html>

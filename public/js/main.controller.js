@@ -19,7 +19,7 @@ class MainCtrl {
       if (this.ajaxCall === undefined) {
         this.ajaxCall = this.getTrades().then(() => this.ajaxCall = undefined);
       }
-    }, 5000);
+    }, 15000);
   }
 
   getTrades() {

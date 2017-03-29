@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tradeSelector.css">
   </head>
-  <body ng-app="poe-trader" ng-cloak ng-controller="MainCtrl as MainCtrl">
+  <body ng-app="poe-trader" ng-cloak ng-controller="MainCtrl as vm">
     <header>
       <h1>
         Why hello there
@@ -15,15 +16,8 @@
     </header>
 
     <main>
-      <h1>In the {{ MainCtrl.item1.name }} / {{ MainCtrl.item2.name }} market, be a {{ MainCtrl.role }}</h1>
-      <div>
-        <h1>Item 1 for Item 2</h1>
-        <code>{{ MainCtrl.itemATrades[0] }}</code>
-      </div>
-      <div>
-        <h1>Item 2 for Item 1</h1>
-        <code>{{ MainCtrl.itemBTrades[0] }}</code>
-      </div>
+      <trade-selector trades="vm.itemATrades" selected="vm.selectedItemA" on-select="vm.selectedItemA = trade"></trade-selector>
+      <trade-selector trades="vm.itemBTrades" selected="vm.selectedItemB" on-select="vm.selectedItemB = trade"></trade-selector>
     </main>
 
     <footer>
@@ -34,8 +28,9 @@
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script><!-- load angular -->
-    <script src="app.js"></script>
-    <script src="main.controller.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.controller.js"></script>
+    <script src="js/tradeSelector.component.js"></script>
   </body>
 </html>

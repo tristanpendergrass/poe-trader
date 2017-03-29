@@ -1,0 +1,8 @@
+<ul>
+  <li
+    ng-repeat="trade in vm.trades"
+    ng-class="{ selected: trade === vm.selected }"
+    ng-click="vm.onSelect({ trade: trade })">
+    trade by {{ trade.ign }}
+  </li>
+</ul>

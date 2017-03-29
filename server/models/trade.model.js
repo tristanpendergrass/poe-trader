@@ -4,9 +4,9 @@ module.exports = class Trade {
   constructor(data) {
     this.ign = data.ign; // in game name of the trader
     this.buycurrency = getItemById(data.buycurrency);
-    this.buyamount = data.buyamount;
+    this.buyvalue = data.buyvalue;
     this.sellcurrency = getItemById(data.sellcurrency);
-    this.sellamount = data.sellamount;
+    this.sellvalue = data.sellvalue;
   }
 
   get ratio() {

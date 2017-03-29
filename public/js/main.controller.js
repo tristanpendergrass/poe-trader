@@ -20,8 +20,6 @@ class MainCtrl {
         this.itemBTrades = res[1].data;
         this.selectedItemB = this.itemBTrades[0];
 
-        console.log('this.itemATrades is', this.itemATrades);
-
         $timeout();
       });
   }

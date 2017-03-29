@@ -1,5 +1,9 @@
 class MainCtrl {
-  constructor($scope, $http, $timeout) {
+  constructor($scope, $http, $timeout, $interval) {
+    this.$scope = $scope;
+    this.$http = $http;
+    this.$timeout = $timeout;
+
     const itemA = this.itemA = {
       id: 4,
       name: 'Chaos'
@@ -9,9 +13,21 @@ class MainCtrl {
       name: 'Jeweller'
     };
 
-    Promise.all([
-      $http.get(`/trades?want=${ itemA.id }&have=${ itemB.id }`),
-      $http.get(`/trades?want=${ itemB.id }&have=${ itemA.id }`)
+    this.ajaxCall = this.getTrades().then(() => this.ajaxCall = undefined);
+
+    $interval(() => {
+      if (this.ajaxCall === undefined) {
+        this.ajaxCall = this.getTrades().then(() => this.ajaxCall = undefined);
+      }
+    }, 5000);
+  }
+
+  getTrades() {
+    if (this.ajaxUpdate !== undefined) return;
+
+    return Promise.all([
+      this.$http.get(`/trades?want=${ this.itemA.id }&have=${ this.itemB.id }`),
+      this.$http.get(`/trades?want=${ this.itemB.id }&have=${ this.itemA.id }`)
     ])
       .then((res) => {
         this.itemATrades = res[0].data;
@@ -20,7 +36,8 @@ class MainCtrl {
         this.itemBTrades = res[1].data;
         this.selectedItemB = this.itemBTrades[0];
 
-        $timeout();
+        this.lastUpdatedAt = new Date();
+        this.$timeout();
       });
   }
 }
